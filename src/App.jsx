@@ -7,6 +7,8 @@ import Footer from './components/Footer.jsx'
 import MyLogo from './assets/Print.svg'
 
 function App() {
+const greeting = import.meta.env.VITE_GREETING
+const apiUrl = import.meta.env.VITE_API_URL
   const [count, setCount] = useState(0)
 
   return (
@@ -24,6 +26,8 @@ function App() {
          </a>
       </div>
       <h1>Vite + React</h1>
+       <h2>{greeting}</h2>
+       <h3>{apiUrl}</h3>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
