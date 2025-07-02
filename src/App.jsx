@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import MyLogo from './assets/Print.svg'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,9 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+         <a href="https://in.linkedin.com/in/satvika-gada-510007301" target="_blank">
+             <img src={MyLogo} className="logo" alt="My logo" />
+         </a>
       </div>
       <h1>Vite + React</h1>
       <div className="card">

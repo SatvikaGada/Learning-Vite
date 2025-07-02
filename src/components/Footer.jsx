@@ -4,5 +4,4 @@ export default function Footer() {
             <p>&copy; 2025 All Rights Reserved</p>
         </footer>
     )
-
 }
