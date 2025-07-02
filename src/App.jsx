@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,10 +8,35 @@ import MyLogo from './assets/Print.svg'
 
 function App() {
 const greeting = import.meta.env.VITE_GREETING
-const apiUrl = import.meta.env.VITE_API_URL
+
   const [count, setCount] = useState(0)
 
-  return (
+  const [ipAddress, setIpAddress] = useState("")
+
+    useEffect(() => {
+        const fetchIpAddress = async () => {
+
+            const apiUrl = import.meta.env.VITE_API_URL
+
+            try{
+                const response= await fetch(`${apiUrl}?format=json`);
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const data =await response.json();
+                setIpAddress(data.ip);
+            } catch (err) {
+                setIpAddress("Error fetching IP address");
+                console.log(err.message);
+            };
+        }
+        fetchIpAddress();
+    }, [])
+
+
+    return (
     <>
         <Header />
       <div>
@@ -27,7 +52,7 @@ const apiUrl = import.meta.env.VITE_API_URL
       </div>
       <h1>Vite + React</h1>
        <h2>{greeting}</h2>
-       <h3>{apiUrl}</h3>
+       <h3>Your IP address is {ipAddress}</h3>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
